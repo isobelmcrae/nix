@@ -3,10 +3,16 @@
   "display": {
     "separator": "  "
   },
+  "logo": {
+    "color": {
+      "1": "blue",
+      "2": "green"
+    }
+  },
   "modules": [
     // Title
     {
-      "type": "title",
+      "type": "title" ,
       "format": "{#1}╭───────────── {#}{user-name-colored}"
     },
     // System Information
