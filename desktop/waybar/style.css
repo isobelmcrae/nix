@@ -1,0 +1,173 @@
+@import "rose-pine.css";
+
+* {
+    font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+
+window#waybar {
+    background-color: rgba(0,0,0,0);
+    border-radius: 10px;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces {
+    padding: 0px 5px 0px 0px;
+}
+
+/* inactive buttons */
+#workspaces button {
+    all:unset;
+    padding: 0px 5px;
+    color: alpha(@muted,.4);
+    transition: all .2s ease;
+}
+
+#workspaces button:hover {
+    color:rgba(0,0,0,0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0,0,0,0.5);
+    transition: all 1s ease;
+}
+#workspaces button.active {
+    color: @rose;
+    border: none;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+#workspaces button.empty {
+    color: @subtle;
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+}
+#workspaces button.empty:hover {
+    color: @subtle;
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
+}
+#workspaces button.empty.active {
+    color: @text;
+    border: none;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+
+#clock {
+    padding: 0px 4px 0px 7px;
+}
+#battery,
+#network,
+#disk,
+#custom-pacman,
+#custom-dunst,
+#custom-recstatus,
+#custom-player,
+#custom-immich,
+#custom-expand
+{
+    padding: 0px 5px;
+    color: @text;
+}
+#custom-launcher 
+{
+    color: @rose;
+    padding: 5px 5px;
+}
+#pulseaudio
+{
+    padding: 0 5px;
+}
+
+#pulseaudio {
+    color: @text;
+}
+
+#network {
+    color: @text;
+}
+
+#network.disconnected {
+    color: @gold;
+}
+
+#temperature {
+    color: @text;
+}
+
+#memory {
+    color: @text;
+}
+
+#cpu {
+    color: @text;
+}
+
+#battery {
+    color: @text;
+}
+
+#clock {
+    color: @text;
+}
+
+#window {
+    color: @text;
+}
+
+#language {
+    color: white;
+}
+
+#custom-spacer {
+  padding: 0 5px;
+}
+
+
+
+.modules-right,.modules-left {
+    background-color: @base;
+    border-radius: 10px;
+}
+.modules-right {
+    padding: 0 10px;
+}
+
+.modules-left {
+    padding: 0 10px;
+}
+
+#battery.charging, #battery.plugged {
+    color: @foam;
+}
+
+#battery.critical {
+    color: @love;
+}
+
+@keyframes blink {
+    to {
+        color: #000000;
+    }
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#pulseaudio.muted {
+    color: @love;
+}

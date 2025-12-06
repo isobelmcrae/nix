@@ -1,0 +1,134 @@
+{
+	"layer":"top",
+	"margin-top" : 5,
+	"margin-left": 10,
+	"margin-right": 10,
+	"margin-bottom": 0,
+	"height" : 30,
+	"modules-left": ["custom/launcher", "clock" ],
+	"modules-right": ["custom/recstatus", "custom/player", "pulseaudio", "disk", "group/expand"],
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"format-icons": {
+			"active": "",
+			"default": "",
+			"empty": ""
+		}
+	},
+	"clock": {
+		"tooltip-format": " <big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"locale":"en_AU.UTF-8",
+		"format-alt": "{:%Y-%m-%d}"
+	},
+	"cpu": {
+		"format": "CPU: {usage}%",
+		"tooltip": false
+	},
+	"memory": {
+		"format": "MEM: {}%",
+		"tooltip": false
+	},
+	"temperature": {
+		"critical-threshold": 80,
+		"format": "{icon} {temperatureC}°C",
+		"format-icons": ["", "", ""]
+	},
+	"hyprland/language": {
+		"format": "{short}",
+	},
+	"network": {
+		"tooltip-format": "{ifname} via {gwaddr} ",
+		"format-wifi": "  {essid} ({signalStrength}%)",
+		"format-ethernet": "{essid}",
+		"format-disconnected": " ⚠ ",
+	},
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-charging": "󰂄 {capacity}%",
+		"format-plugged": "󰚥 {capacity}%",
+		"format-alt": "{icon} {time}",
+		"format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+	},
+
+	"pulseaudio": {
+		"format": "{icon}  {volume}%",
+		"format-bluetooth": "{volume}% {icon}",
+		"format-bluetooth-muted": " {icon}",
+		"format-muted": "󰝟",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["", "", ""]
+		},
+		"on-click": "pavucontrol"
+	},
+	"custom/launcher":{
+		"format": "",
+		"on-click": "fuzzel",
+		"tooltip": false
+	},
+	"hyprland/window":{
+		"format":"| {class}",
+		"max-length":60,
+		"rewrite": {
+			"(.*) — Mozilla Firefox": "$1",
+			"(.*) - Visual Studio Code": "$1",
+			"class<org.qutebrowser.qutebrowser>": "qutebrowser"
+		}
+	},
+	"custom/dunst": {
+		"exec": "~/.config/waybar/scripts/dunst.sh",
+		"on-click": "dunstctl set-paused toggle",
+		"restart-interval": 1,
+	},
+	"custom/spacer": {
+		"format": " "
+	},
+	"disk": {
+		"interval": 30,
+		"format": " {percentage_used}%",
+		"tooltip": "{free} remaining",
+		"path": "/"
+
+	},
+	"custom/recstatus": {
+		"format": "{}",
+		"exec": "~/.config/waybar/scripts/recstatus.sh",
+		"interval": 1
+	},
+	"custom/player": {
+		"format": "{icon}{text}",
+		"return-type": "json",
+		"format-icons": {
+			"Playing": " ",
+			"Paused": " "
+		},
+		"max-length": 70,
+		"exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"tooltip\": \"{{playerName}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+		"on-click": "playerctl play-pause"
+	},
+	"custom/expand": {
+		"format": "",
+		"tooltip": false
+	},
+	"group/expand": {
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 600,
+			"transition-to-left": true,
+			"click-to-reveal": true
+		},
+		"modules": ["custom/expand", "custom/pacman"]
+	}
+
+
+}
