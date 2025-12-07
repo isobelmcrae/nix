@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./programs/firefox.nix
+  ];
+
   home.username = "iso";
   home.homeDirectory = "/home/iso";
 
@@ -42,7 +46,6 @@
   programs.fuzzel.enable = true;
   programs.swaylock.enable = true;
   programs.waybar.enable = true;
-  programs.firefox.enable = true;
 
   programs.fastfetch.enable = true;
   programs.zoxide = {
