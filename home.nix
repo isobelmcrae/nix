@@ -1,8 +1,15 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
     ./programs/firefox.nix
+    ./programs/nvim.nix
+    inputs.nvf.homeManagerModules.default
   ];
 
   home.username = "iso";
@@ -96,7 +103,6 @@
   xdg.configFile."fastfetch/config.jsonc".source = ./desktop/fastfetch/config.jsonc;
   xdg.configFile."waybar/".source = ./desktop/waybar;
   xdg.configFile."vesktop/themes/".source = ./desktop/vesktop/themes;
-  xdg.configFile."nvim/".source = ./programs/nvim;
 
   home.stateVersion = "25.11";
   programs.home-manager.enable = true;

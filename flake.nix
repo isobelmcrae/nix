@@ -16,13 +16,20 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # nvim config
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    {
+    inputs@{
       self,
       nixpkgs,
       home-manager,
+      nvf,
       ...
     }:
     {
@@ -37,6 +44,7 @@
               useUserPackages = true;
               users.iso = import ./home.nix;
               backupFileExtension = "backup";
+              extraSpecialArgs = { inherit inputs; };
             };
           }
         ];
