@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  # nvf is used to configure nvim
   programs.nvf = {
     enable = true;
 
@@ -32,55 +33,63 @@
           markdown.enable = true;
           typst.enable = true;
         };
-        # autcomplete.blink-cmp.enable = true;
+        autocomplete.blink-cmp.enable = true;
         diagnostics.nvim-lint.enable = true;
         formatter.conform-nvim.enable = true;
         debugger.nvim-dap.enable = true;
-
         autopairs.nvim-autopairs.enable = true;
-        utility.oil-nvim = {
-          enable = true;
-          setupOpts = {
-            win_options.signcolumn = "yes:2";
-            float = {
-              padding = 5;
-              max_width = 0;
-              max_height = 0;
-              border = "rounded";
-              win_options = {
-                winblend = 0;
-                signcolumn = "yes:2";
+
+        utility = {
+          oil-nvim = {
+            enable = true;
+            setupOpts = {
+              win_options.signcolumn = "yes:2";
+              float = {
+                padding = 5;
+                max_width = 0;
+                max_height = 0;
+                border = "rounded";
+                win_options = {
+                  winblend = 0;
+                  signcolumn = "yes:2";
+                };
+              };
+              view_options = {
+                show_hidden = true;
               };
             };
-            view_options = {
-              show_hidden = true;
+          };
+
+          snacks-nvim = {
+            enable = true;
+            setupOpts = {
+              bufdelete.enabled = true;
+              indent.enabled = true;
+              scroll.enabled = true;
+              statuscolumn.enabled = true;
+              words.enabled = true;
+              terminal.enabled = true;
             };
           };
+
+          motion.flash-nvim.enable = true;
+          images.img-clip.enable = true;
+          sleuth.enable = true;
         };
-        utility.motion.flash-nvim.enable = true;
-        utility.snacks-nvim = {
-          enable = true;
-          setupOpts = {
-            bufdelete.enabled = true;
-            indent.enabled = true;
-            scroll.enabled = true;
-            statuscolumn.enabled = true;
-            words.enabled = true;
-            terminal.enabled = true;
-          };
-        };
-        utility.images.img-clip.enable = true;
-        utility.sleuth.enable = true;
 
         telescope.enable = true;
+
+        # visuals 
         statusline.lualine.enable = true;
         tabline.nvimBufferline = {
           enable = true;
-          setupOpts.options.separator_style = "slant";
+          setupOpts.options = {
+            separator_style = "slant";
+            always_show_bufferline = false;
+          };
         };
         visuals.indent-blankline.enable = true;
         git.gitsigns.enable = true;
-
         notes.todo-comments.enable = true;
 
         binds.whichKey.enable = true;
