@@ -9,6 +9,7 @@
   imports = [
     ./programs/firefox.nix
     ./programs/nvim.nix
+    ./programs/zed.nix
     inputs.nvf.homeManagerModules.default
   ];
 
@@ -26,15 +27,6 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    extraPackages = with pkgs; [
-      nil
-      lua-language-server
-      gopls
-      eslint
-      tinymist
-      clang-tools
-      typescript-language-server
-    ];
   };
 
   programs.fish = {
@@ -75,6 +67,7 @@
     # system tools
     wl-clipboard
     brightnessctl
+    btop
 
     # niri/aesthetics
     swww

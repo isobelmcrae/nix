@@ -6,7 +6,7 @@
   config,
   lib,
   pkgs,
-  ...
+ ...
 }:
 
 {
@@ -93,6 +93,19 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  system.autoUpgrade = {
+    enable = true;
+    dates = "weekly";
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-older-than 10d";
+  };
+
+  nix.settings.auto-optimise-store = true;
 
   services.openssh.enable = true;
   system.stateVersion = "25.11";
