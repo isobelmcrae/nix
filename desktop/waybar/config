@@ -6,7 +6,7 @@
 	"margin-bottom": 0,
 	"height" : 30,
 	"modules-left": ["custom/launcher", "clock" ],
-	"modules-right": ["custom/recstatus", "custom/player", "pulseaudio", "disk", "group/expand"],
+	"modules-right": ["custom/recstatus", "pulseaudio", "disk", "battery", "group/expand"],
 	"hyprland/workspaces": {
 		"format": "{icon}",
 		"format-icons": {

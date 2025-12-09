@@ -76,6 +76,8 @@
 
     # other apps
     vesktop
+    keepassxc
+    syncthing
   ];
 
   xdg.portal = {

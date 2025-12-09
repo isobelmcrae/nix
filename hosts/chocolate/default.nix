@@ -1,0 +1,4 @@
+{
+  imports = [];
+  networking.hostName = "chocolate";
+}

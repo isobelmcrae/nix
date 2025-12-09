@@ -1,5 +1,5 @@
 {
-  description = "kiwi nixos config";
+  description = "iso nixos config";
   nixConfig = {
     extra-substituters = [
       "https://nixos-apple-silicon.cachix.org"
@@ -32,11 +32,13 @@
       nvf,
       ...
     }:
-    {
-      nixosConfigurations.kiwi = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
+    let 
+    mkSystem = { system, hostPath }: nixpkgs.lib.nixosSystem {
+        inherit system;
+
         modules = [
           ./configuration.nix
+          hostPath
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -48,6 +50,18 @@
             };
           }
         ];
+      };
+    in {
+      nixosConfigurations = {
+        kiwi = mkSystem {
+          system = "aarch64-linux";
+          hostPath = ./hosts/kiwi;
+        };
+
+        chocolate = mkSystem {
+          system = "x86_64-linux";
+          hostPath = ./hosts/chocolate;
+        };
       };
     };
 }

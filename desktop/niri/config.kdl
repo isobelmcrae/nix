@@ -41,7 +41,7 @@ layout {
         width 3
         inactive-color "#505050"
         urgent-color "#eb6f92"
-	active-gradient from="#ebbcba" to="#c4a7e7" angle=45 relative-to="workspace-view" in="oklch increasing hue"
+	active-gradient from="#ebbcba" to="#c4a7e7" angle=45 relative-to="workspace-view"
     }
 
     focus-ring {
