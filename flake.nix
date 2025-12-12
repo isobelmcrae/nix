@@ -22,6 +22,11 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -30,12 +35,13 @@
       nixpkgs,
       home-manager,
       nvf,
+      stylix,
       ...
     }:
     let 
     mkSystem = { system, hostPath }: nixpkgs.lib.nixosSystem {
         inherit system;
-
+        specialArgs.flake-inputs = inputs;
         modules = [
           ./configuration.nix
           hostPath

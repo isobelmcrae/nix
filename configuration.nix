@@ -6,10 +6,15 @@
   config,
   lib,
   pkgs,
+  flake-inputs,
  ...
 }:
 
 {
+  imports = [
+    flake-inputs.stylix.nixosModules.stylix
+  ];
+
   # allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -24,7 +29,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # networking
-  networking.hostName = "kiwi";
   networking.networkmanager.enable = true;
 
   # uv installs python binaries to ~/.local/bin
@@ -33,6 +37,17 @@
     XDG_CURRENT_DESKTOP = "niri";
     XDG_SESSION_TYPE = "wayland";
   };
+
+  stylix = {
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    autoEnable = true;
+    enable = true;
+    cursor = {
+      name = "BreezeX-RoséPine";
+      package = pkgs.rose-pine-cursor;
+    };
+  };
+  stylix.cursor.size = 24;
 
   # more stuff to get uv to work
   programs.nix-ld.enable = true;
@@ -51,6 +66,9 @@
 
   programs.niri.enable = true;
   programs.fish.enable = true;
+
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
 
   environment.systemPackages = with pkgs; [
     openssl

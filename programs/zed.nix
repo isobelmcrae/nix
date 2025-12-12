@@ -27,8 +27,6 @@
       format_on_save = "off";
       
       # visuals
-      ui_font_size = 16;
-      buffer_font_size = 13.0;
       inlay_hints.enabled = false;
 
       title_bar = {
@@ -36,12 +34,6 @@
         show_project_items = true;
         show_sign_in = false;
         show_menus = false;
-      };
-
-      theme = {
-        mode = "dark";
-        light = "Rosé Pine Dawn";
-        dark = "Rosé Pine";
       };
 
       tabs.show_diagnostics = "all";
@@ -56,9 +48,5 @@
       outline_panel.button = false;
       notification_panel.button = false;
     };
-
-    extensions = [
-      "rose-pine-theme"
-    ];
   };
 }

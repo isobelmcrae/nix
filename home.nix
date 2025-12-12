@@ -10,6 +10,7 @@
     ./programs/firefox.nix
     ./programs/nvim.nix
     ./programs/zed.nix
+    ./services/dunst.nix
     inputs.nvf.homeManagerModules.default
   ];
 
@@ -36,10 +37,13 @@
     '';
   };
 
-  programs.kitty = {
+  programs.ghostty = {
     enable = true;
-    shellIntegration.enableFishIntegration = true;
-    themeFile = "rose-pine";
+    enableFishIntegration = true;
+    settings = {
+      theme = "Rose Pine";
+      font-size = 11;
+    };
   };
 
   programs.fuzzel.enable = true;
@@ -55,9 +59,13 @@
     ];
   };
 
-  services.dunst.enable = true;
   services.swayidle.enable = true;
   services.polkit-gnome.enable = true;
+  services.udiskie = {
+    enable = true;
+    automount = true;
+    notify = true;
+  };
 
   home.packages = with pkgs; [
     # development
@@ -69,6 +77,11 @@
     brightnessctl
     btop
 
+    # file manager & automounting
+    xfce.thunar
+    xfce.thunar-volman
+    udisks
+
     # niri/aesthetics
     swww
     gowall
@@ -78,13 +91,18 @@
     vesktop
     keepassxc
     syncthing
+    signal-desktop
+    
+    rose-pine-gtk-theme
+    rose-pine-cursor
   ];
 
   xdg.portal = {
     enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
-      pkgs.xdg-desktop-portal-gtk
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
     ];
 
     config.common.default = [
@@ -94,7 +112,6 @@
   };
 
   # this is not very nix of me but idc
-  xdg.configFile."niri/config.kdl".source = ./desktop/niri/config.kdl;
   xdg.configFile."fastfetch/config.jsonc".source = ./desktop/fastfetch/config.jsonc;
   xdg.configFile."waybar/".source = ./desktop/waybar;
   xdg.configFile."vesktop/themes/".source = ./desktop/vesktop/themes;

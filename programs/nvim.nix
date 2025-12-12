@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   # nvf is used to configure nvim
   programs.nvf = {
@@ -11,10 +11,10 @@
 
         theme = {
           enable = true;
-          name = "rose-pine";
-          style = "main";
+          name = lib.mkForce "rose-pine";
+          style = lib.mkForce "main";
         };
-
+        
         lsp = {
           enable = true;
           trouble.enable = true;
@@ -78,6 +78,7 @@
         };
 
         telescope.enable = true;
+        clipboard.providers.wl-copy.enable = true;
 
         # visuals 
         statusline.lualine.enable = true;

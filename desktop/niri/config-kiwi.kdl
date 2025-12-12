@@ -60,7 +60,8 @@ layout {
 
 spawn-at-startup "waybar"
 spawn-at-startup "swww-daemon"
-spawn-sh-at-startup "swww img /etc/nixos/desktop/wallpaper/transmissions-rp.jpg"
+spawn-at-startup "udiskie"
+spawn-sh-at-startup "swww img ~/nix/desktop/wallpaper/transmissions-rp.jpg"
 
 hotkey-overlay {
     skip-at-startup
