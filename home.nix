@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 
@@ -10,6 +11,7 @@
     ./programs/firefox.nix
     ./programs/nvim.nix
     ./programs/zed.nix
+    ./programs/obsidian.nix
     ./services/dunst.nix
     inputs.nvf.homeManagerModules.default
   ];
@@ -24,6 +26,7 @@
       email = "isobel@isobel.zip";
     };
   };
+
 
   programs.neovim = {
     enable = true;
@@ -92,9 +95,16 @@
     keepassxc
     syncthing
     signal-desktop
+    unzip
     
-    rose-pine-gtk-theme
+    # themes, cursors
     rose-pine-cursor
+
+    apple-cursor
+    nh
+
+    typst
+    zathura
   ];
 
   xdg.portal = {

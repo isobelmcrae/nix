@@ -22,7 +22,7 @@ output "eDP-1" {
 }
 
 cursor {
-    xcursor-theme "BreezeX-RoséPine"
+    xcursor-theme "rose-pine-cursor"
     xcursor-size 24
 }
 

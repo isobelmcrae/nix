@@ -11,6 +11,13 @@
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+
   hardware.nvidia = {
     modesetting.enable = true;
     nvidiaSettings = true;

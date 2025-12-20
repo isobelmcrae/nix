@@ -1,3 +1,5 @@
+{ lib, ... }:
+
 {
   programs.zed-editor = {
     enable = true;
@@ -35,6 +37,9 @@
         show_sign_in = false;
         show_menus = false;
       };
+
+      theme = lib.mkForce "Rosé Pine";
+      buffer_font_size = lib.mkForce 12;
 
       tabs.show_diagnostics = "all";
       project_panel.entry_spacing = "comfortable";

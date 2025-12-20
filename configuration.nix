@@ -30,6 +30,7 @@
 
   # networking
   networking.networkmanager.enable = true;
+  services.resolved.enable = true;
 
   # uv installs python binaries to ~/.local/bin
   environment.localBinInPath = true;
@@ -76,6 +77,8 @@
   services.gvfs.enable = true;
   services.tumbler.enable = true;
 
+  services.mullvad-vpn.enable = true;
+
   environment.systemPackages = with pkgs; [
     openssl
     vim
@@ -89,6 +92,7 @@
     nerd-fonts.jetbrains-mono
     noto-fonts
     noto-fonts-cjk-sans
+    atkinson-hyperlegible-next
   ];
 
   # programs.mtr.enable = true;
