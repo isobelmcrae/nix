@@ -55,7 +55,6 @@
   programs.nix-ld.libraries = with pkgs; [
     glibc
   ];
-  programs.nix-ld.enableDynamicLoading = true;
 
   i18n.defaultLocale = "en_AU.UTF-8";
   time.timeZone = "Australia/Sydney";
@@ -78,6 +77,14 @@
   services.tumbler.enable = true;
 
   services.mullvad-vpn.enable = true;
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    user = "iso";
+    dataDir = "/home/iso";
+    configDir = "/home/iso/.config/syncthing";
+  };
+  services.tailscale.enable = true;
 
   environment.systemPackages = with pkgs; [
     openssl
