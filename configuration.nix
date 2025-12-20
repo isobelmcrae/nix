@@ -51,6 +51,10 @@
 
   # more stuff to get uv to work
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    glibc
+  ];
+  programs.nix-ld.enableDynamicLoading = true;
 
   i18n.defaultLocale = "en_AU.UTF-8";
   time.timeZone = "Australia/Sydney";
@@ -60,12 +64,14 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "docker"
     ];
     shell = pkgs.fish;
   };
 
   programs.niri.enable = true;
   programs.fish.enable = true;
+  virtualisation.docker.enable = true;
 
   services.gvfs.enable = true;
   services.tumbler.enable = true;
